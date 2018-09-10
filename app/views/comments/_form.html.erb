@@ -1,0 +1,16 @@
+<%= form_with(model: @comment, local: true ,url: choose_new_or_edit ) do |form| %>
+    <% if @comment.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= @comment.errors.count %>件のエラーがあります。</h2>
+            <ul>
+            <% @comment.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>    
+            </ul>
+        </div>
+    <% end %>
+    <div class="content">
+        <p><%= form.text_field :content %></p>
+    </div>
+    <p><%= form.submit %></p>
+<% end %>

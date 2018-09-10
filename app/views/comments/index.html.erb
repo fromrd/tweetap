@@ -1,0 +1,14 @@
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<h1>tweet一覧</h1>
+<div id="new-blog-link">
+  <%= link_to '新しくつぶやく', new_comment_path %>
+</div>
+
+<% @comments.each do |comment| %>
+    <h2><%= comment.content %></h2>
+    <%= link_to 'Edit', edit_comment_path(comment.id), class: 'btn btn-info' %>
+    <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<% end %>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tweetap</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <p>Tweet App</p>
+    </header>
+    <nav class="menu">
+      <div class="container">
+        <ul class="row">
+          <li class="col-md-4"><%= link_to 'トップ', top_comments_path %></li>
+          <li class="col-md-4"><%= link_to 'tweet一覧', comments_path %></li>
+          <li class="col-md-4"><%= link_to 'つぶやく', new_comment_path %></li>
+        </ul>
+      </div>
+    </nav>
+
+    <% flash.each do |key, value| %>
+      <% content_tag(:div, value, class: "#{key}") %>
+    <% end %>
+    
+    <div class="wide_content">
+    <%= yield %>
+    </div>
+    
+    <footer>
+      <p>運営会社DIVE INTO CODE株式会社</p>
+      <p>© 2015-2016 Copyright DIVE INTO CODE Corp.</p>
+    </footer>
+  </body>
+</html>
